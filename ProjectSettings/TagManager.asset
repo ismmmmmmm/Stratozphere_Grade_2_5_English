@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Transition
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3672620139
+    locked: 0
+  - name: 2nd Layer
+    uniqueID: 2217377277
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
