@@ -28,7 +28,7 @@ public class Lesson_5_Slide35 : Audio_Narration
     [SerializeField] Animator dolly, hennika, mainCam;
     [SerializeField] RuntimeAnimatorController hennikaS35, hennikaS40;
     [SerializeField] AnimationClip camZoomIn, camZoomOut;
-    [SerializeField] GameObject btnLayoutGroup, slide40;
+    [SerializeField] GameObject btnLayoutGroup, slide40, visuals;
 
     GameObject _correctBtn, _slide40_sentence;
     typewriterUI _typewriterUI_S, _typewriterUI_Q;
@@ -127,6 +127,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
         yield return new WaitForSeconds(2); //camera transition on cover full screen, *adjust to fit*
         background.sprite = backgroundSprite[1];
+        visuals.SetActive(true);
         ResetScene();
 
         hennika.runtimeAnimatorController = hennikaS40;

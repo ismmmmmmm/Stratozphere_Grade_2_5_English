@@ -39,7 +39,7 @@ public class Lesson_5_Slide21 : Audio_Narration
 
     IEnumerator StartScene()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         for (int i = 0; i < animations.Length; i++)
         {
             SetAudioNarration(_audioCount);
