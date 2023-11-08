@@ -14,16 +14,19 @@ public class Lesson_5_Slide40 : MonoBehaviour, IDragHandler, IBeginDragHandler, 
     [HideInInspector] public int _draggedIndex;
     [HideInInspector] public bool _isCorrect;
     GameObject[] choicesBtn;
-    RectTransform _objectRectTransform;
+    [HideInInspector] public RectTransform _objectRectTransform;
     Vector2 _startPosition, _startOffset;
     Lesson_5_Slide35 _s35;
     [SerializeField] GameObject _Slide_35;
-    Image _image;
+    Image _image, _sentenceImage;
     
     void Awake()
     {
+        
         _s35 = _Slide_35.GetComponent<Lesson_5_Slide35>();
+        _sentenceImage = transform.GetChild(0).Find("Sentence").gameObject.GetComponent<Image>();
         choicesBtn = _s35.choicesBtn;
+        
     }
     void Start()
     {
@@ -55,13 +58,31 @@ public class Lesson_5_Slide40 : MonoBehaviour, IDragHandler, IBeginDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        bool isDropped = IsObjectDropped(eventData);
         _image.raycastTarget = true;
         if (_objectBeingDragged != null)
         {
-            if (_isCorrect == false) _objectRectTransform.position = _startPosition;
-            else 
-            _objectBeingDragged = null;
+            if (_isCorrect == true && isDropped == true)
+            {
+                _objectBeingDragged = null;
+            }
+            else _objectRectTransform.position = _startPosition;
         }
+    }
+
+    public bool IsObjectDropped(PointerEventData eventData)
+    {
+        if (eventData.pointerEnter != null)
+        {
+            GameObject droppedObj = eventData.pointerEnter;
+            Image droppedImg = droppedObj.GetComponent<Image>();
+            if (droppedImg != null && droppedImg == _sentenceImage)
+            {
+                return true;
+            }
+            else return false;
+        }
+        return false;
     }
 
     private GameObject GetDraggableObject(PointerEventData eventData)

@@ -1589,6 +1589,8 @@ MonoBehaviour:
   - {fileID: 813013868}
   _objectBeingDragged: {fileID: 0}
   _draggedIndex: 0
+  _isCorrect: 0
+  _objectRectTransform: {fileID: 0}
   _Slide_35: {fileID: 2108349224}
 --- !u!1 &1122411730
 GameObject:
@@ -3259,6 +3261,12 @@ MonoBehaviour:
   backgroundSprite:
   - {fileID: 21300000, guid: 3ddd17864d2485446ac05a5597c3635b, type: 3}
   - {fileID: 21300000, guid: 2ec993ce83bf3884d99751a29fc05e5b, type: 3}
+  sentenceCrate:
+  - {fileID: 21300000, guid: c54faabafb7ba4640a6dcd386d739175, type: 3}
+  - {fileID: 21300000, guid: 4e5e02615c4a319489598f4a841baacb, type: 3}
+  - {fileID: 21300000, guid: 64bad2885f1459d4eb3b2419ed3297a0, type: 3}
+  - {fileID: 21300000, guid: 509b5d293de2e7243b89b54f576c9824, type: 3}
+  - {fileID: 21300000, guid: bcda3cc2f93c55d4bac29c8d2bf30ac5, type: 3}
   questionText:
   - Which is the action verb in the sentence?
   - Which is the action verb in the sentence?
@@ -3303,7 +3311,6 @@ MonoBehaviour:
   camZoomOut: {fileID: 7400000, guid: 1dedb1ccada427a46a3afed2506e9421, type: 2}
   btnLayoutGroup: {fileID: 859696171}
   slide40: {fileID: 2010410759499976269}
-  slide40_sentence: {fileID: 872374761}
 --- !u!1 &2010410759499976269
 GameObject:
   m_ObjectHideFlags: 0

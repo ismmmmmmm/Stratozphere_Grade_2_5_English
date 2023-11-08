@@ -15,7 +15,7 @@ public class Lesson_5_Slide35 : Audio_Narration
     [Header("Multiple")]
     public GameObject[] choicesBtn;
     Button[] choices;
-    [SerializeField] Sprite[] btnSprite, backgroundSprite;
+    [SerializeField] Sprite[] btnSprite, backgroundSprite, sentenceCrate;
     [SerializeField] string[] questionText, sentenceText;
     [SerializeField] int[] correctAnswer;
     [SerializeField] AnimationClip[] animations;
@@ -28,17 +28,19 @@ public class Lesson_5_Slide35 : Audio_Narration
     [SerializeField] Animator dolly, hennika, mainCam;
     [SerializeField] RuntimeAnimatorController hennikaS35, hennikaS40;
     [SerializeField] AnimationClip camZoomIn, camZoomOut;
-    [SerializeField] GameObject btnLayoutGroup, slide40, slide40_sentence;
+    [SerializeField] GameObject btnLayoutGroup, slide40;
 
-    GameObject _correctBtn;
+    GameObject _correctBtn, _slide40_sentence;
     typewriterUI _typewriterUI_S, _typewriterUI_Q;
-    int _currentValue, _level, _btnCount, _animIndex = 1, _audioIndex = 1, called, _speedMultiplier = 10;
+    int _currentValue, _level, _btnCount, _animIndex = 1, _audioIndex = 1, called, _speedMultiplier = 10, currentSprite;
     bool _isVisible = false, _canClick = true, _isFast;
     Transform _slide40Canvas; Vector3 _layoutGroupDefaultSize;
     Lesson_5_Slide40 _s40;
+    Vector3 _defaultScale;
 
     void Awake()
     {
+        _slide40_sentence = slide40.transform.GetChild(0).Find("Sentence").gameObject;
         _s40 = slide40.GetComponent<Lesson_5_Slide40>();
         _slide40Canvas = slide40.transform.GetChild(0);
     }
@@ -120,7 +122,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     IEnumerator InitialSceneSequence_Slide40()
     {
-        slide40_sentence.SetActive(false);
+        _slide40_sentence.SetActive(false);
         StartCoroutine(Plain_transition());
 
         yield return new WaitForSeconds(2); //camera transition on cover full screen, *adjust to fit*
@@ -139,6 +141,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
         btnLayoutGroup.transform.SetParent(_slide40Canvas, true);
         btnLayoutGroup.transform.localScale = _layoutGroupDefaultSize;
+        btnLayoutGroup.GetComponent<RectTransform>().anchoredPosition = new Vector3(-40, -95, 0);
         choices = choices.Take(choices.Length - 2).ToArray();
         if (slide40 != null) slide40.SetActive(true);
         if (sentenceTMP != null) sentenceTMP.gameObject.SetActive(false);
@@ -164,9 +167,24 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     void ActivateQuestion()
     {
-        if (questionTMP != null) questionTMP.text = questionText[_level];
+        if (questionTMP != null)
+        {
+            questionTMP.text = questionText[_level];
+            questionTMP.gameObject.SetActive(true);
+        }
+
         // typewriterUI_Q = questionTMP.gameObject.GetComponent<typewriterUI>();
         // StartCoroutine(typewriterUI_Q.TypeWriterTMP()); //text animation
+    }
+
+    void ActivateSentenceCrate()
+    {
+        if (_slide40_sentence != false)
+        {
+            _slide40_sentence.SetActive(true);
+            _slide40_sentence.GetComponent<Image>().sprite = sentenceCrate[currentSprite];
+            currentSprite++;
+        }
     }
 
     void StartCurrentScene(int currentLevel)
@@ -201,10 +219,12 @@ public class Lesson_5_Slide35 : Audio_Narration
     {
         if (questionTMP != null) questionTMP.gameObject.SetActive(false);
         if (sentenceTMP != null) sentenceTMP.gameObject.SetActive(false);
+        if (_slide40_sentence != null) _slide40_sentence.SetActive(false);
         if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(false);
         if (helpBtn != null) helpBtn.gameObject.SetActive(false);
-
-        for (int i = 0; i < choices.Length; i++)
+        if (_correctBtn != null) _correctBtn.transform.localScale = _defaultScale;
+        _s40._isCorrect = false;
+;        for (int i = 0; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
             choices[i].interactable = false;
@@ -331,7 +351,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     public bool CheckAnswerDragDrop()
     {
-        GameObject droppedObj = slide40_sentence.GetComponent<Lesson_5_slide40_Drop>()._droppedObj;
+        GameObject droppedObj = _slide40_sentence.GetComponent<Lesson_5_slide40_Drop>()._droppedObj;
         if (droppedObj != null)
         {
             int index = _s40._draggedIndex;
@@ -351,7 +371,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     public IEnumerator CorrectAnswerDragDrop()
     {
-        for (int i = 0;  i < choicesBtn.Length; i++)
+        for (int i = 0; i < choicesBtn.Length; i++)
         {
             if (choicesBtn[i] != _correctBtn)
             {
@@ -359,10 +379,8 @@ public class Lesson_5_Slide35 : Audio_Narration
             }
         }
 
-        Vector3 defaultScale = _correctBtn.transform.localScale;
-        Debug.Log(defaultScale);
+        _defaultScale = _correctBtn.transform.localScale;
         _correctBtn.GetComponent<Animator>().Play("Bottle_Shrink");
-        _correctBtn.transform.position = slide40_sentence.transform.position;
 
         yield return new WaitForSeconds(2f);
         if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(true);
@@ -412,11 +430,8 @@ public class Lesson_5_Slide35 : Audio_Narration
     {
         yield return new WaitForSeconds(2); //wait x seconds before showing Slide40 UI
 
-        slide40_sentence.SetActive(true);
+        ActivateSentenceCrate();
         yield return new WaitForSeconds(1.5f); //show sentence -> x seconds -> show choices
-
-        btnLayoutGroup.GetComponent<RectTransform>().anchoredPosition = new Vector3(-40, -95, 0);
-        yield return new WaitForEndOfFrame();
 
         StartCoroutine(SetButtonsActive(() =>
         {
