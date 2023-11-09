@@ -64,9 +64,13 @@ public class Lesson_5_Slide40 : MonoBehaviour, IDragHandler, IBeginDragHandler, 
         {
             if (_isCorrect == true && isDropped == true)
             {
+                //  _objectBeingDragged = null;
+            }
+            else
+            {
+                _objectRectTransform.position = _startPosition;
                 _objectBeingDragged = null;
             }
-            else _objectRectTransform.position = _startPosition;
         }
     }
 
@@ -76,6 +80,12 @@ public class Lesson_5_Slide40 : MonoBehaviour, IDragHandler, IBeginDragHandler, 
         {
             GameObject droppedObj = eventData.pointerEnter;
             Image droppedImg = droppedObj.GetComponent<Image>();
+
+            if (_isCorrect)
+            {
+
+            }
+
             if (droppedImg != null && droppedImg == _sentenceImage)
             {
                 return true;
