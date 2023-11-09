@@ -6,7 +6,7 @@ using UnityEngine;
 public class Transition_Script : MonoBehaviour
 {
     public Animator anim;
-    private string animName = "Plain_Transition_Reverse";
+    private string animName = "Slide_5_Transition_In";
     void Start()
     {
         StartCoroutine(Use_Transition());
