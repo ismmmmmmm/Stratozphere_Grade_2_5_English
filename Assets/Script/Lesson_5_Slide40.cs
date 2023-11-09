@@ -40,7 +40,7 @@ public class Lesson_5_Slide40 : MonoBehaviour, IDragHandler, IBeginDragHandler, 
         {
             _draggedIndex = Array.IndexOf(choicesBtn, _objectBeingDragged);
             _image = _objectBeingDragged.GetComponent<Image>();
-            _image.raycastTarget = false;
+            if (_image != null) _image.raycastTarget = false;
             _objectRectTransform = _objectBeingDragged.GetComponent<RectTransform>();
             _startPosition = _objectRectTransform.position;
             _startOffset = _startPosition - eventData.position;
@@ -59,7 +59,7 @@ public class Lesson_5_Slide40 : MonoBehaviour, IDragHandler, IBeginDragHandler, 
     public void OnEndDrag(PointerEventData eventData)
     {
         bool isDropped = IsObjectDropped(eventData);
-        _image.raycastTarget = true;
+        if (_image != null) _image.raycastTarget = true;
         if (_objectBeingDragged != null)
         {
             if (_isCorrect == true && isDropped == true)

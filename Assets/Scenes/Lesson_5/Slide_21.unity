@@ -159,6 +159,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 23990e4733cfbac4b828aa48f8165e02, type: 2}
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5805197292867457681, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
       propertyPath: m_Name
       value: Button_Canvas

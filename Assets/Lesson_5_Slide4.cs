@@ -12,7 +12,7 @@ public class Lesson_5_Slide4 : Audio_Narration
     public string[] bookText;
     public AnimationClip[] animations, bookAnimations;
     int[] audioCount = {2, 1, 1, 1, 2, 1, 2, 1, 1}; //index 0 = slide 7
-
+    
     public Animator leftScreen, rightScreen, mainCam;
     public GameObject glisten, bookBG;
     
@@ -36,7 +36,7 @@ public class Lesson_5_Slide4 : Audio_Narration
 
     void Update()
     {
-        FastForward();
+       FastForward();
     }
 
     void FastForward()
@@ -87,10 +87,10 @@ public class Lesson_5_Slide4 : Audio_Narration
         SetAudioNarration(_audioIndex);
         rightScreen.Play(animations[_animIndex].name);
 
-        yield return new WaitForSeconds(4.5f); //timing on "in the story, ..."
+        yield return new WaitForSeconds(clip[_audioIndex].length);//timing on "in the story, ..."
         glisten.SetActive(true);
 
-        yield return new WaitForSeconds(2f); //wait before clickable
+        //yield return new WaitForSeconds(2f); //wait before clickable
         cowBtn.gameObject.SetActive(true);
         cowBtn.onClick.AddListener(CowBtn);
         _audioIndex++; _animIndex++;
@@ -205,7 +205,6 @@ public class Lesson_5_Slide4 : Audio_Narration
     IEnumerator AudioCountReader()
     {
         var currentAudioCount = audioCount[_level];
-        Debug.Log("Audio Count: " + currentAudioCount);
 
         for (int i = 0; i < currentAudioCount; i++)
         {

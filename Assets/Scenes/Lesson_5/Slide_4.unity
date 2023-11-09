@@ -260,7 +260,7 @@ RectTransform:
   m_GameObject: {fileID: 262338573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1502951346}
@@ -1006,6 +1006,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 23990e4733cfbac4b828aa48f8165e02, type: 2}
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5805197292867457681, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
       propertyPath: m_Name
       value: Button_Canvas
