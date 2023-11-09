@@ -32,7 +32,8 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     GameObject _correctBtn, _slide40_sentence;
     typewriterUI _typewriterUI_S, _typewriterUI_Q;
-    int _currentValue, _level, _btnCount, _animIndex = 1, _audioIndex = 1, called, _speedMultiplier = 10, currentSprite;
+    int _currentValue, _level, _btnCount, _animIndex = 1, _audioIndex = 1, 
+        called, _speedMultiplier = 10, currentSprite;
     bool _isVisible = false, _canClick = true, _isFast;
     Transform _slide40Canvas; Vector3 _layoutGroupDefaultSize;
     Lesson_5_Slide40 _s40;
@@ -132,20 +133,30 @@ public class Lesson_5_Slide35 : Audio_Narration
 
         hennika.runtimeAnimatorController = hennikaS40;
         if (camZoomIn != null) mainCam.Play(camZoomIn.name); //camera zoom in
+
         yield return new WaitForSeconds(camZoomIn.length + .5f); //delay before speaking
         SetAudioNarration(9); //hennika talks about the challenge
         if (hennika != null && animations != null) hennika.Play(animations[7].name);
+
         yield return new WaitForSeconds(clip[9].length - .2f);
         hennika.SetBool("isSpeakDone", true);
         if (camZoomOut != null) mainCam.Play(camZoomOut.name); //camera zoom out
+
         yield return new WaitForSeconds(camZoomOut.length - 1.5f); //delay before showing sentence
+       /* hennika.SetBool("isSpeakDone", false);
+        _audioIndex = 13;
+        SetAudioNarration(_audioIndex);
+        if (hennika != null && animations != null) hennika.Play(animations[7].name);
+
+        yield return new WaitForSeconds(clip[_audioIndex].length); //show sentence -> x seconds -> show choices
+        hennika.SetBool("isSpeakDone", true);*/
 
         btnLayoutGroup.transform.SetParent(_slide40Canvas, true);
         btnLayoutGroup.transform.localScale = _layoutGroupDefaultSize;
         btnLayoutGroup.GetComponent<RectTransform>().anchoredPosition = new Vector3(-40, -95, 0);
         choices = choices.Take(choices.Length - 2).ToArray();
 
-        helpAudioIndex = 10;
+        helpAudioIndex = 10; _audioIndex = 13;
         helpBtn.transform.Find("HelpPanel").transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = 
             "Remember, a plural subject, or a subject that is more than one in quantity, " +
             "takes a plural verb, or the base form of a verb.";
@@ -182,6 +193,8 @@ public class Lesson_5_Slide35 : Audio_Narration
             questionTMP.gameObject.SetActive(true);
         }
 
+        invisibleWall.SetActive(false);
+
         // typewriterUI_Q = questionTMP.gameObject.GetComponent<typewriterUI>();
         // StartCoroutine(typewriterUI_Q.TypeWriterTMP()); //text animation
     }
@@ -198,6 +211,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     void StartCurrentScene(int currentLevel)
     {
+        invisibleWall.SetActive(true);
         if (currentLevel < questionText.Length)
         {
             if (currentLevel == 0) //first scene of slide35
@@ -295,7 +309,7 @@ public class Lesson_5_Slide35 : Audio_Narration
         }
 
         //start choices uninteractable
-        yield return new WaitForSeconds(2f); //start delay before button.interactable
+        //yield return new WaitForSeconds(2f); //start delay before button.interactable
         if (_level <= 4)
         {
             foreach (Button button in choices)
@@ -377,20 +391,22 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     public IEnumerator CorrectAnswerDragDrop()
     {
+        invisibleWall.SetActive(true);
         SetAudioNarration(correctAudioIndex);
 
-        for (int i = 0; i < choicesBtn.Length; i++)
+        /*for (int i = 0; i < choicesBtn.Length; i++)
         {
             if (choicesBtn[i] != _correctBtn)
             {
                 Debug.Log(choicesBtn[i]);
             }
-        }
+        }*/
 
         _defaultScale = _correctBtn.transform.localScale;
         _correctBtn.GetComponent<Animator>().Play("Bottle_Shrink");
 
         yield return new WaitForSeconds(2f);
+        invisibleWall.SetActive(false);
         if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(true);
         nextSlideButton.onClick.AddListener(ActivateNextScene);
         _level++;
@@ -471,16 +487,19 @@ public class Lesson_5_Slide35 : Audio_Narration
     IEnumerator Slide40_Sequence()
     {
         yield return new WaitForSeconds(2); //wait x seconds before showing Slide40 UI
-
+        hennika.SetBool("isSpeakDone", false);
         ActivateSentenceCrate();
-        yield return new WaitForSeconds(1.5f); //show sentence -> x seconds -> show choices
-
+        SetAudioNarration(_audioIndex);
+        if (hennika != null && animations != null) hennika.Play(animations[7].name);
+        float waitSec = 4f;
+        yield return new WaitForSeconds(waitSec);
         StartCoroutine(SetButtonsActive(() =>
         {
             ActivateQuestion();
         }));
-
-        _animIndex++; _audioIndex++;
+        yield return new WaitForSeconds(clip[_audioIndex].length - waitSec); //show sentence -> x seconds -> show choices
+        hennika.SetBool("isSpeakDone", true);
+        _audioIndex++;
     }
 
 }

@@ -658,7 +658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &522661461
 RectTransform:
   m_ObjectHideFlags: 0
@@ -675,7 +675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 203}
+  m_AnchoredPosition: {x: 84, y: 203}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522661462
@@ -701,13 +701,13 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af03940e9d50b0949bf64cb2db8fd091, type: 2}
-  m_sharedMaterial: {fileID: -23006014473064789, guid: ee0f334baad1e064b90154614c174b99, type: 2}
+  m_sharedMaterial: {fileID: -1598276914696258937, guid: af03940e9d50b0949bf64cb2db8fd091, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278195299
+    rgba: 4292758352
   m_fontColor: {r: 0.3137255, g: 0.29411766, b: 0.87058824, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -725,8 +725,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -761,10 +761,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -678.1703, y: 0, z: -678.1706, w: 0}
+  m_margin: {x: -678.1703, y: 0, z: -497.13202, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &522661463
@@ -1278,6 +1278,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 23990e4733cfbac4b828aa48f8165e02, type: 2}
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5805197292867457681, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
       propertyPath: m_Name
       value: Button_Canvas
@@ -3053,7 +3061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -345}
+  m_AnchoredPosition: {x: 83, y: -345}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741125394
@@ -3103,8 +3111,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3139,7 +3147,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -678.1703, y: 0, z: -678.1706, w: 0}
+  m_margin: {x: -678.1703, y: 0, z: -507.1098, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3851,7 +3859,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 195fdc307d1c14245adae53ef2230618, type: 3}
   - {fileID: 8300000, guid: af83275753632b74592b70ab9eec537f, type: 3}
   - {fileID: 8300000, guid: 2f04d272ae23988468d90ca5383e1cc3, type: 3}
+  - {fileID: 8300000, guid: d63d44524fb5c7245ae4e6656960d6e1, type: 3}
   - {fileID: 8300000, guid: f44a79915184e484188cdcbe52331d1b, type: 3}
+  - {fileID: 8300000, guid: caf52ca433be7654fbe2b72f7cdcf3ae, type: 3}
+  - {fileID: 8300000, guid: f3ba7de26854048478e23ebe328e33ea, type: 3}
+  - {fileID: 8300000, guid: b063ba478a9e30b44a88c76a3ab85be7, type: 3}
+  - {fileID: 8300000, guid: 86727eefabe337446bc9d4547c9e8861, type: 3}
+  - {fileID: 8300000, guid: c44795b817c55dd4e8dc83b2f5706123, type: 3}
   transition: {fileID: 596807661}
   wilbur: {fileID: 0}
   invisibleWall: {fileID: 287375623}

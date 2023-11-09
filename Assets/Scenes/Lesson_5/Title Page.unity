@@ -873,6 +873,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 23990e4733cfbac4b828aa48f8165e02, type: 2}
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4237738408867929195, guid: 23990e4733cfbac4b828aa48f8165e02, type: 2}
+    - target: {fileID: 3557434359751143362, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5805197292867457681, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
       propertyPath: m_Name
       value: Button_Canvas
@@ -955,6 +967,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5993994795086702107, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770233526210999626, guid: 5bbe96fb5b4992d4b95701c108568237, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1196,7 +1212,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a6de94088c2c03344afb226480f5f8ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c897d6ca08b61934597f01f237c452fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
