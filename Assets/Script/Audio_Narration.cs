@@ -13,7 +13,7 @@ public class Audio_Narration : MonoBehaviour
     public GameObject nextButton;
     private void Start()
     {
-        StartCoroutine(Transition_Out());
+        //StartCoroutine(Transition_Out());
     }
     public void SetAudioNarration(int audioClip)
     {
@@ -76,7 +76,7 @@ public class Audio_Narration : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine()
     {
-        transition.Play("Plain_Transition");
+        transition.Play("Slide_5_Transition_Out");
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

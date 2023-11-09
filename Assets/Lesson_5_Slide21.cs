@@ -5,7 +5,7 @@ public class Lesson_5_Slide21 : Audio_Narration
 {
     public Animator animator;
     public AnimationClip[] animations;
-    int _audioCount, _speedMultiplier = 3;
+    int _audioCount, _speedMultiplier = 20;
     bool _isFast = false;
 
     void Start()
@@ -47,5 +47,7 @@ public class Lesson_5_Slide21 : Audio_Narration
             yield return new WaitForSeconds(clip[_audioCount].length);
             _audioCount++;
         }
+
+        nextButton.SetActive(true);
     }
 }

@@ -163,6 +163,12 @@ public class Lesson_5_Slide4 : Audio_Narration
 
     IEnumerator Slide6_Bookflip()
     {
+        if (_level == 9)
+        {
+            LoadScene();
+            yield return new WaitForSeconds(10);
+        }
+
         yield return new WaitForSeconds(1);
         bookBG.GetComponent<Animator>().Play(bookFlip.name);
         _textTMP.gameObject.SetActive(false);

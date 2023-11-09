@@ -144,6 +144,14 @@ public class Lesson_5_Slide35 : Audio_Narration
         btnLayoutGroup.transform.localScale = _layoutGroupDefaultSize;
         btnLayoutGroup.GetComponent<RectTransform>().anchoredPosition = new Vector3(-40, -95, 0);
         choices = choices.Take(choices.Length - 2).ToArray();
+
+        helpAudioIndex = 10;
+        helpBtn.transform.Find("HelpPanel").transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = 
+            "Remember, a plural subject, or a subject that is more than one in quantity, " +
+            "takes a plural verb, or the base form of a verb.";
+        helpBtn.onClick.RemoveAllListeners();
+        helpBtn.onClick.AddListener(HelpButton_s40);
+
         if (slide40 != null) slide40.SetActive(true);
         if (sentenceTMP != null) sentenceTMP.gameObject.SetActive(false);
 
@@ -249,28 +257,24 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     void SetButtonsValue(int index)
     {
-        if (_canClick) //wait for x seconds before clicking again
-        {
             _currentValue = index;
 
             if (_isVisible)
             {
-                HelpButton();
+                HelpButton(); //close open panel after choice button clicked
             }
-
-            _canClick = false;
 
             if (choices != null)
             {
                 foreach (Button button in choices)
                 {
-                    button.interactable = false;
+                  //  button.interactable = false;
                 }
             }
 
             StartCoroutine(CheckAnswer());
             //         StartCoroutine(EnableClickAfterDelay(3f));
-        }
+        
     }
 
     IEnumerator SetButtonsActive(Action onComplete)
@@ -307,18 +311,20 @@ public class Lesson_5_Slide35 : Audio_Narration
         onComplete.Invoke();
     }
 
-    IEnumerator EnableClickAfterDelay(float delay) //prevent clicks after n seconds
+    IEnumerator isWrong() //prevent clicks after n seconds
     {
-        yield return new WaitForSeconds(delay);
-        _canClick = true;
-
-        if (choices != null)
+        invisibleWall.SetActive(true);
+        if (hennika != null) hennika.SetTrigger("Hmm");
+        SetAudioNarration(wrongAudioIndex);
+        yield return new WaitForSeconds(clip[wrongAudioIndex].length);
+        invisibleWall.SetActive(false);
+        /*if (choices != null)
         {
             foreach (Button button in choices)
             {
                 button.interactable = true;
             }
-        }
+        }*/
     }
 
     IEnumerator CheckAnswer() //check if clicked choice index == int correctAnswer
@@ -344,15 +350,14 @@ public class Lesson_5_Slide35 : Audio_Narration
 
         else                                       //is wrong
         {
-            if (hennika != null) hennika.SetTrigger("Hmm");
-            SetAudioNarration(wrongAudioIndex);
-            StartCoroutine(EnableClickAfterDelay(3f));
+            StartCoroutine(isWrong());
         }
     }
 
     public bool CheckAnswerDragDrop()
     {
-        GameObject droppedObj = _slide40_sentence.GetComponent<Lesson_5_slide40_Drop>()._droppedObj;
+        // GameObject droppedObj = _slide40_sentence.GetComponent<Lesson_5_slide40_Drop>()._droppedObj;
+        GameObject droppedObj = _s40._objectBeingDragged;
         if (droppedObj != null)
         {
             int index = _s40._draggedIndex;
@@ -372,6 +377,8 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     public IEnumerator CorrectAnswerDragDrop()
     {
+        SetAudioNarration(correctAudioIndex);
+
         for (int i = 0; i < choicesBtn.Length; i++)
         {
             if (choicesBtn[i] != _correctBtn)
@@ -391,17 +398,51 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     void HelpButton()
     {
+        StartCoroutine(HelpButton_s35_Enum());
+    }
+
+    IEnumerator HelpButton_s35_Enum()
+    {
         if (helpBtn != null)
         {
             _isVisible = !_isVisible;
             helpBtn.transform.Find("HelpPanel").gameObject.SetActive(_isVisible);
             if (_isVisible)
             {
+                invisibleWall.SetActive(true);
                 SetAudioNarration(helpAudioIndex);
                 if (hennika != null) hennika.SetTrigger("Remember");
+                yield return new WaitForSeconds(clip[helpAudioIndex].length);
+                invisibleWall.SetActive(false);
             }
         }
     }
+
+    void HelpButton_s40()
+    {
+        StartCoroutine(HelpButton_s40_Enum());
+    }
+
+    IEnumerator HelpButton_s40_Enum()
+    {
+        if (helpBtn != null)
+        {
+            _isVisible = !_isVisible;
+            helpBtn.transform.Find("HelpPanel").gameObject.SetActive(_isVisible);
+            if (_isVisible )
+            {
+                invisibleWall.SetActive(true);
+                hennika.SetBool("isSpeakDone", false);
+                SetAudioNarration(helpAudioIndex);
+                if (hennika != null) hennika.SetTrigger("s40_anim");
+                yield return new WaitForSeconds(clip[helpAudioIndex].length);
+                hennika.SetBool("isSpeakDone", true);
+                invisibleWall.SetActive(false);
+            }
+        }
+    }
+
+
     #endregion
 
     void ActivateNextScene()
