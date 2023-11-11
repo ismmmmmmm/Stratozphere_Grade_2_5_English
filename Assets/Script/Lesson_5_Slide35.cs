@@ -1,12 +1,8 @@
 using System;
 using System.Collections;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using static Unity.Burst.Intrinsics.X86;
 
@@ -32,9 +28,9 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     GameObject _correctBtn, _slide40_sentence;
     typewriterUI _typewriterUI_S, _typewriterUI_Q;
-    int _currentValue, _level, _btnCount, _animIndex = 1, _audioIndex = 1, 
-        called, _speedMultiplier = 10, currentSprite;
-    bool _isVisible = false, _canClick = true, _isFast;
+    int _currentValue, _level, _btnCount, _animIndex = 1, _audioIndex = 1
+        , _speedMultiplier = 10, currentSprite;
+    bool _isVisible = false, _isFast;
     Transform _slide40Canvas; Vector3 _layoutGroupDefaultSize;
     Lesson_5_Slide40 _s40;
     Vector3 _defaultScale;
@@ -87,7 +83,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-            _canClick = true;
+           // _canClick = true;
             if (choices != null)
             {
                 choices[correctAnswer[_level]].image.color = Color.green;
@@ -345,7 +341,7 @@ public class Lesson_5_Slide35 : Audio_Narration
     {
         if (_currentValue == correctAnswer[_level]) //is correct
         {
-            _canClick = true;
+          //  _canClick = true;
             if (choices != null)
             {
                 choices[correctAnswer[_level]].image.color = Color.green;
