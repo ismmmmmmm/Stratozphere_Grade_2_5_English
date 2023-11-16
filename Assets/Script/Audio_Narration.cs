@@ -23,10 +23,15 @@ public class Audio_Narration : MonoBehaviour
         source.clip = clip[audioClip];
         source.Play();
     }
+
+    public void RestartScene(int buildIndex)
+    {
+        StartCoroutine(NextSceneCoroutine(buildIndex));
+    }
     
     public IEnumerator NextSceneCoroutine(int buildIndex)
     {
-        transition.Play("Plain_Transition");
+        transition.Play("Slide_5_Transition_Out");
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(buildIndex);
     }
@@ -96,7 +101,7 @@ public class Audio_Narration : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void GoToZoglebere()
+    public void GoToZogleber()
     {
         StartCoroutine(GoToZogleberCoroutine());
     }

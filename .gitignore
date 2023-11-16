@@ -4,9 +4,9 @@
 #
 /[Ll]ibrary/
 /[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
+//[Oo]bj/
+//[Bb]uild/
+//[Bb]uilds/
 /[Ll]ogs/
 //[Uu]ser[Ss]ettings/
 
@@ -46,7 +46,6 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-*.png.meta
 
 # Unity3D generated meta files
 *.pidb.meta

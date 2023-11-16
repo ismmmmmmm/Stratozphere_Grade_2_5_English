@@ -294,14 +294,14 @@ public class Lesson_5_Slide4 : Audio_Narration
         _audioIndex++;
     }
 
-    public void GoToZogleber()
+    public void GoToZogleber2()
     {
         StartCoroutine(GoToZogleberEnum());
     }
 
     IEnumerator GoToZogleberEnum()
     {
-        //Application.OpenURL(urlToOpen);                           --do not delete--
+        Application.OpenURL(urlToOpen);                         
         yield return new WaitForSeconds(2f);
         nextSlideButton.onClick.RemoveAllListeners();
         nextSlideButton.onClick.AddListener(ActivateNextScene);

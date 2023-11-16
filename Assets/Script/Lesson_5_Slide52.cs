@@ -8,25 +8,29 @@ public class Lesson_5_Slide52 : Audio_Narration
     [SerializeField] string[] sentenceText;
 
     [SerializeField] TextMeshProUGUI sentenceTMP;
-    [SerializeField] GameObject dollyLayoutG;
+    [SerializeField] GameObject threeLayoutG;
     [SerializeField] Sprite stableCloseDoor;
     [SerializeField] SpriteRenderer background;
     [SerializeField] Animator mainCam;
     [SerializeField] AnimationClip mainCamAnim;
     [SerializeField] Button[] choicesBtns;
 
+    delegate void nextSceneDelegate();
+    nextSceneDelegate nextFunc;
     GameObject buttonLayoutG;
     Button nextSlideBtn;
-    int _audioIndex, _level, _currentValue;
+    int _audioIndex, _level;
 
     void Start()
     {
+        nextFunc = NextSequence;
         buttonLayoutG = choicesBtns[0].transform.parent.gameObject;
         buttonLayoutG.SetActive(false);
-        dollyLayoutG.SetActive(false);
+        threeLayoutG.SetActive(false);
         nextSlideBtn = nextButton.GetComponent<Button>();
         sentenceTMP.gameObject.SetActive(false);
         SetButtonsValue();
+
         StartCoroutine(InitialSequence());
     }
 
@@ -59,24 +63,28 @@ public class Lesson_5_Slide52 : Audio_Narration
 
     IEnumerator NextScene_Sequence() //s53
     {
+        sentenceTMP.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(1);
         StartCoroutine(Plain_transition());
 
         yield return new WaitForSeconds(2);
         ResetScene();
         background.GetComponent<Animator>().enabled = false;
-        Vector3 fitScale = new Vector3(.65f, .65f, 1);
+        Vector3 fitScale = new(.65f, .65f, 1);
         background.transform.localScale = fitScale;
         background.sprite = stableCloseDoor;
-        dollyLayoutG.SetActive(true);
+        threeLayoutG.SetActive(true);
 
         yield return new WaitForSeconds(1);
         mainCam.Play(mainCamAnim.name); //cam zoom in -> go right
 
         yield return new WaitForSeconds(mainCamAnim.length);
         SetAudioNarration(_audioIndex); //read sentence
+
         sentenceTMP.horizontalAlignment = HorizontalAlignmentOptions.Center;
         sentenceTMP.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 95);
+
         SetSentence();
 
         yield return new WaitForSeconds(clip[_audioIndex].length);
@@ -84,16 +92,16 @@ public class Lesson_5_Slide52 : Audio_Narration
         buttonLayoutG.SetActive(true); //clickable
     }
 
-    void Sequence()
+    void NextSequence()
     {
-        StartCoroutine(Sequence_Enum());
+        StartCoroutine(NextSequence_Enum());
     }
 
-    IEnumerator Sequence_Enum() //s54
+    IEnumerator NextSequence_Enum() //s54
     {
         yield return new WaitForSeconds(1);
         ResetScene();
-        dollyLayoutG.SetActive(true);
+        threeLayoutG.SetActive(true);
 
         yield return new WaitForSeconds(1);
         mainCam.Play(mainCamAnim.name); //cam zoom in -> go right
@@ -105,6 +113,7 @@ public class Lesson_5_Slide52 : Audio_Narration
         yield return new WaitForSeconds(clip[_audioIndex].length);
         _audioIndex++;
         buttonLayoutG.SetActive(true); //clickable
+        nextFunc = () => { LoadScene(); };
     }
 
     void ResetScene()
@@ -115,7 +124,7 @@ public class Lesson_5_Slide52 : Audio_Narration
         sentenceTMP.text = "";
         invisibleWall.SetActive(false);
         buttonLayoutG.SetActive(false);
-        dollyLayoutG.SetActive(false);
+        threeLayoutG.SetActive(false);
     }
     void CheckAnswer(int index)
     {
@@ -124,17 +133,17 @@ public class Lesson_5_Slide52 : Audio_Narration
 
     IEnumerator CheckAnswer_Enum(int index)
     {
-        GameObject dollySprite;
+        GameObject threeSprite;
         string verbAnimName;
-        dollySprite = dollyLayoutG.transform.GetChild(index).gameObject;
-        verbAnimName = dollySprite.name + "_Clicked";
-        dollySprite.GetComponent<Animator>().Play(verbAnimName);
+        threeSprite = threeLayoutG.transform.GetChild(index).gameObject;
+        verbAnimName = threeSprite.name + "_Clicked";
+        threeSprite.GetComponent<Animator>().Play(verbAnimName);
         invisibleWall.SetActive(true);
 
         yield return new WaitForSeconds(2);
         nextSlideBtn.gameObject.SetActive(true);
         nextSlideBtn.onClick.RemoveAllListeners();
-        nextSlideBtn.onClick.AddListener(Sequence);
+        nextSlideBtn.onClick.AddListener(() => nextFunc());
     }
 
     void SetSentence()
