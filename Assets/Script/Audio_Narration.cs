@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Audio_Narration : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class Audio_Narration : MonoBehaviour
     public Animator wilbur;
     public GameObject invisibleWall;
     public GameObject nextButton;
+
     private void Start()
     {
         //StartCoroutine(Transition_Out());
+
     }
     public void SetAudioNarration(int audioClip)
     {
