@@ -24,7 +24,7 @@ public class Lesson_5_Slide35 : Audio_Narration
     [SerializeField] Animator dolly, hennika, mainCam;
     [SerializeField] RuntimeAnimatorController hennikaS35, hennikaS40;
     [SerializeField] AnimationClip camZoomIn, camZoomOut;
-    [SerializeField] GameObject btnLayoutGroup, slide40, visuals, s35_canvas, slide50;
+    [SerializeField] GameObject btnLayoutGroup, slide40, visuals, s35_canvas, slide50, sentenceCrateGO, moveToGO;
 
     GameObject _correctBtn, _slide40_sentence;
     typewriterUI _typewriterUI_S;
@@ -47,6 +47,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     void Start()
     {
+        Debug.Log(sentenceCrateGO.transform.localPosition);
         ConvertChoicesToButtons();
         ResetScene();
         //        StartCoroutine(InitialSceneSequence_Slide35());
@@ -60,6 +61,7 @@ public class Lesson_5_Slide35 : Audio_Narration
     void Update()
     {
         FastForward();
+
     }
 
     void FastForward()
@@ -122,6 +124,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     IEnumerator InitialSceneSequence_Slide40()
     {
+        nextButton.SetActive(false);
         _slide40_sentence.SetActive(false);
         StartCoroutine(Plain_transition());
 
@@ -236,7 +239,7 @@ public class Lesson_5_Slide35 : Audio_Narration
     void StartCurrentScene(int currentLevel)
     {
         invisibleWall.SetActive(true);
-        if (currentLevel < questionText.Length+2) // +s50-51
+        if (currentLevel < questionText.Length + 2) // +s50-51
         {
             if (currentLevel == 0) //first scene of slide35
             {
@@ -411,6 +414,8 @@ public class Lesson_5_Slide35 : Audio_Narration
                 choices[correctAnswer[_level]].GetComponent<Animator>().Play("Choices_Bounce");
             }
 
+
+
             if (hennika != null) hennika.Play("Hennika_Idle");
 
             SetAudioNarration(correctAudioIndex);
@@ -429,6 +434,10 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     public bool CheckAnswerDragDrop()
     {
+        if (_isVisible)
+        {
+            HelpButton(); //close open panel after choice button clicked
+        }
         // GameObject droppedObj = _slide40_sentence.GetComponent<Lesson_5_slide40_Drop>()._droppedObj;
         GameObject droppedObj = _s40._objectBeingDragged;
         if (droppedObj != null)
