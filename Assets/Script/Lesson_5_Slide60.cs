@@ -49,7 +49,7 @@ public class Lesson_5_Slide60 : Audio_Narration
     void NextScene()
     {
         ResetScene();
-        if (_level > sentenceText.Length - 1) StartCoroutine(LoadSlide63());
+        if (_level > sentenceText.Length - 1) StartCoroutine(LoadSlide63()); 
         else StartCoroutine(NextScene_Sequence());
     }
 

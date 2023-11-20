@@ -444,7 +444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &326521732
 Transform:
   m_ObjectHideFlags: 0
@@ -1444,8 +1444,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0f391e6ac8a6d82458c8264c2a8f68aa, type: 3}
   - {fileID: 8300000, guid: e6e46c7c4bc34e24d9802cc481eca912, type: 3}
   - {fileID: 8300000, guid: 3ea79e7055e3b28469c4e3fc00fa7597, type: 3}
-  - {fileID: 8300000, guid: b2630f0d936e1294da3f3ba1e2e912d1, type: 3}
-  - {fileID: 8300000, guid: 34ec0e24aa1f8a44593d9f453333cffc, type: 3}
+  - {fileID: 8300000, guid: 172bfeb39c4d42242950aae59fe0c6cd, type: 3}
+  - {fileID: 8300000, guid: 14ce5300f1cfe4849b5fccf3698419ac, type: 3}
   - {fileID: 8300000, guid: 096568234bb68704e86ffffc7f6f51af, type: 3}
   - {fileID: 8300000, guid: 4e2624109157e0a4c898df67807f8eef, type: 3}
   - {fileID: 8300000, guid: b2630f0d936e1294da3f3ba1e2e912d1, type: 3}
@@ -1453,9 +1453,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34ec0e24aa1f8a44593d9f453333cffc, type: 3}
   - {fileID: 8300000, guid: e66d5222d3056c14b905706ec979c712, type: 3}
   transition: {fileID: 774131176}
-  wilbur: {fileID: 0}
   invisibleWall: {fileID: 2005097016}
   nextButton: {fileID: 2122287528}
+  zogleber: {fileID: 1695065460}
   bookText:
   - 'Dolly is a young cow who has many friends.
 
@@ -1492,8 +1492,8 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 954409e961e16824d964b2fbec172c92, type: 2}
   - {fileID: 7400000, guid: 9033b07ec6590fb499eb043359657f1a, type: 2}
   - {fileID: 7400000, guid: 6e1d11b56c3728c4d973145ee33fed3c, type: 2}
-  - {fileID: 7400000, guid: fb5d7a27a766e80499ee3acebb1d8678, type: 2}
-  - {fileID: 7400000, guid: 72da1d9a4efe8ba4c930f1a0e17d1912, type: 2}
+  - {fileID: 7400000, guid: 9033b07ec6590fb499eb043359657f1a, type: 2}
+  - {fileID: 7400000, guid: 6e1d11b56c3728c4d973145ee33fed3c, type: 2}
   bookAnimations:
   - {fileID: 7400000, guid: 8c43ce19d9da9274db00bc904d393868, type: 2}
   - {fileID: 7400000, guid: 18cf6e35d241f7f46abe1efa9c1ce3d1, type: 2}
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   bookFlip: {fileID: 7400000, guid: ef9744ad168f75942829f08037234f8a, type: 2}
   nextSlideButton: {fileID: 2122287530}
   cowBtn: {fileID: 2087903340}
-  zogleber: {fileID: 1695065463}
+  zogleberBtn: {fileID: 1695065463}
   choice1: {fileID: 651673019}
   choice2: {fileID: 1369308018}
 --- !u!1 &1502951345

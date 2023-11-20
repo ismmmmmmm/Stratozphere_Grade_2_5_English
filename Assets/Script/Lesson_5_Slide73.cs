@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //s73-s74
 public class Lesson_5_Slide73 : Audio_Narration
 {
-    [SerializeField] GameObject slide74, s73BG;
+    [SerializeField] GameObject slide74, s73BG, teacherBtn;
     int _audioIndex;
     Button nextSlideBtn;
 
@@ -18,6 +18,7 @@ public class Lesson_5_Slide73 : Audio_Narration
         TMPLinkHandler.OnClickedOnLinkEvent = LinkOnClick;
 
         nextSlideBtn = nextButton.GetComponent<Button>();
+        nextSlideBtn.onClick.RemoveAllListeners();
         nextSlideBtn.onClick.AddListener(() => { StartCoroutine(LoadSlide74()); });
         StartCoroutine(StartScene());
     }
@@ -37,6 +38,7 @@ public class Lesson_5_Slide73 : Audio_Narration
         nextButton.SetActive(false);
 
         yield return new WaitForSeconds(1);
+        teacherBtn.SetActive(false);
         slide74.SetActive(true);
         s73BG.SetActive(false);
     }

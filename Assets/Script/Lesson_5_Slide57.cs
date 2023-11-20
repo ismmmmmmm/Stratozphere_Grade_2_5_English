@@ -21,7 +21,7 @@ public class Lesson_5_Slide57 : Audio_Narration
             go.transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        backgrounds[0].transform.GetChild(0).gameObject.SetActive(true); //re-enable s57 canvas 
+      //  backgrounds[0].transform.GetChild(0).gameObject.SetActive(true); //re-enable s57 canvas //readd when enabling s57
         nextSlideBtn.onClick.AddListener(NextScene);
         StartCoroutine(StartScene());
     }
@@ -33,6 +33,7 @@ public class Lesson_5_Slide57 : Audio_Narration
 
         yield return new WaitForSeconds(clip[_audioIndex].length);
         _audioIndex++;
+        backgrounds[0].transform.GetChild(0).gameObject.SetActive(true);  //remove when enabling s57
         sentenceTMP.SetActive(true);
         link.SetActive(true);
         _level++;
@@ -47,12 +48,12 @@ public class Lesson_5_Slide57 : Audio_Narration
     void NextScene()
     {
         nextButton.SetActive(false);
-        if (_level > backgrounds.Length - 1) LoadScene(); //next slide 
-        else StartCoroutine(NextSceneEnum());
+        if (_level > backgrounds.Length - 1) LoadScene(); //next slide
+        else StartCoroutine(NextSceneEnum());   //readd with more slides
     }
 
     IEnumerator NextSceneEnum()
-    {
+    {              
         yield return new WaitForSeconds(1);
         foreach (GameObject go in panels) { go.SetActive(true); } //set all links clickable
         backgrounds[_index].SetActive(false);

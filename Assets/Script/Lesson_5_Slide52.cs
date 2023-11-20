@@ -63,6 +63,7 @@ public class Lesson_5_Slide52 : Audio_Narration
 
     IEnumerator NextScene_Sequence() //s53
     {
+        nextButton.SetActive(false);
         sentenceTMP.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1);
@@ -99,6 +100,7 @@ public class Lesson_5_Slide52 : Audio_Narration
 
     IEnumerator NextSequence_Enum() //s54
     {
+        nextButton.SetActive(false);
         yield return new WaitForSeconds(1);
         ResetScene();
         threeLayoutG.SetActive(true);
@@ -113,7 +115,7 @@ public class Lesson_5_Slide52 : Audio_Narration
         yield return new WaitForSeconds(clip[_audioIndex].length);
         _audioIndex++;
         buttonLayoutG.SetActive(true); //clickable
-        nextFunc = () => { LoadScene(); };
+        nextFunc = () => { nextButton.SetActive(false); LoadScene(); };
     }
 
     void ResetScene()
@@ -141,7 +143,7 @@ public class Lesson_5_Slide52 : Audio_Narration
         invisibleWall.SetActive(true);
 
         yield return new WaitForSeconds(2);
-        nextSlideBtn.gameObject.SetActive(true);
+        nextButton.SetActive(true);
         nextSlideBtn.onClick.RemoveAllListeners();
         nextSlideBtn.onClick.AddListener(() => nextFunc());
     }

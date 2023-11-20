@@ -9,9 +9,8 @@ public class Audio_Narration : MonoBehaviour
     public AudioSource source;
     public AudioClip[] clip;
     public Animator transition;
-    public Animator wilbur;
     public GameObject invisibleWall;
-    public GameObject nextButton;
+    public GameObject nextButton, zogleber;
 
     private void Start()
     {
@@ -108,6 +107,7 @@ public class Audio_Narration : MonoBehaviour
 
     private IEnumerator GoToZogleberCoroutine()
     {
+        zogleber.SetActive(false);
         Application.OpenURL("https://zogleber.com");
         yield return new WaitForSeconds(2);
         LoadScene();

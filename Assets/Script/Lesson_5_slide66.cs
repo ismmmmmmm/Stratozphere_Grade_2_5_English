@@ -86,8 +86,10 @@ public class Lesson_5_slide66 : Audio_Narration
     IEnumerator Slide68Enum()
     {
         SetAudioNarration(_audioIndex);
+        invisibleWall.SetActive(true);
 
         yield return new WaitForSeconds(clip[_audioIndex].length);
+        invisibleWall.SetActive(false);
         _text[_textIndex].SetActive(true); Debug.Log(_textIndex);
         _audioIndex++; _textIndex++;
     }
@@ -95,7 +97,7 @@ public class Lesson_5_slide66 : Audio_Narration
     void LinkOnClick()
     {
         nextSlideBtn.onClick.RemoveAllListeners();
-        if (_textIndex > 2)
+        if (_textIndex > 1)
             nextSlideBtn.onClick.AddListener(() => { StartCoroutine(Slide71Transition()); });
         
         else
@@ -120,6 +122,7 @@ public class Lesson_5_slide66 : Audio_Narration
 
     IEnumerator Slide71Transition()
     {
+        nextButton.SetActive(false);
         StartCoroutine(Plain_transition());
 
         yield return new WaitForSeconds(2);

@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 5828849265601101834}
   - component: {fileID: 3364335662600489146}
   - component: {fileID: 4265509697552799236}
+  - component: {fileID: 8338730332510066594}
   m_Layer: 0
   m_Name: TeacherButton
   m_TagString: Untagged
@@ -223,7 +224,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5828849265601101834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8338730332510066594}
+        m_TargetAssemblyTypeName: Teachers_Button, Assembly-CSharp
+        m_MethodName: GoToPage66
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4265509697552799236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +252,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 4, y: 4}
   m_UseGraphicAlpha: 1
+--- !u!114 &8338730332510066594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022143665795538564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df6cbd807285e742bfec97be3dc7873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 0}
+  clip: []
+  transition: {fileID: 0}
+  wilbur: {fileID: 0}
+  invisibleWall: {fileID: 0}
+  nextButton: {fileID: 0}
 --- !u!1 &5633982034209866600
 GameObject:
   m_ObjectHideFlags: 0

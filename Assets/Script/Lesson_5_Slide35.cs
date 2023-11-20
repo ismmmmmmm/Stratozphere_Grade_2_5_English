@@ -163,7 +163,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     IEnumerator InitialSceneSequence_Slide45()
     {
-        StartCoroutine(Plain_transition());                            //fix
+        StartCoroutine(Plain_transition());
         yield return new WaitForSeconds(2); //camera transition on cover full screen, *adjust to fit*
         _slide40_sentence.SetActive(false);
         visuals.SetActive(false);

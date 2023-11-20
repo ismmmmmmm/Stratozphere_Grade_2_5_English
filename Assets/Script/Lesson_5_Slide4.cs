@@ -23,7 +23,7 @@ public class Lesson_5_Slide4 : Audio_Narration
     public Image checkA, checkB;
 
     public AnimationClip cameraClip, bookFlip;
-    public Button nextSlideButton, cowBtn, zogleber, choice1, choice2;
+    public Button nextSlideButton, cowBtn, zogleberBtn, choice1, choice2;
 
     int _audioIndex = 1, _animIndex = 1, _bookAnimIndex = 0, _bookTextIndex,
         _speedMultiplier = 20, _level, _bookFlipAudio, _choiceIndex;
@@ -42,7 +42,7 @@ public class Lesson_5_Slide4 : Audio_Narration
         if (cowBtn != null) cowBtn.gameObject.SetActive(false);
         if (glisten != null) glisten.SetActive(false);
         if (hennika != null) hennika.SetActive(false);
-        if (zogleber != null) zogleber.gameObject.SetActive(false);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(false);
         StartCoroutine(InitialScene());
     }
 
@@ -279,6 +279,9 @@ public class Lesson_5_Slide4 : Audio_Narration
     IEnumerator FinalScene_s16()
     {
         yield return new WaitForSeconds(1);
+        StartCoroutine(Plain_transition());
+
+        yield return new WaitForSeconds(2);
         rightScreen.GetComponent<SpriteRenderer>().sprite = cowStableClosedDoor;
         rightScreen.GetComponent<Animator>().enabled = false;
         if (hennika != null) hennika.SetActive(true);
@@ -289,7 +292,7 @@ public class Lesson_5_Slide4 : Audio_Narration
         SetAudioNarration(_audioIndex);
         hennikaAnim.Play("Slide16_Hennika_Speak'");
         yield return new WaitForSeconds(12);
-        if (zogleber != null) zogleber.gameObject.SetActive(true);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(true);
         //yield return new WaitForSeconds(clip[_audioIndex].length-wait);
         _audioIndex++;
     }
@@ -301,12 +304,28 @@ public class Lesson_5_Slide4 : Audio_Narration
 
     IEnumerator GoToZogleberEnum()
     {
+        zogleberBtn.gameObject.SetActive(false);
         Application.OpenURL(urlToOpen);                         
         yield return new WaitForSeconds(2f);
         nextSlideButton.onClick.RemoveAllListeners();
         nextSlideButton.onClick.AddListener(ActivateNextScene);
         if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(true);
-        if (zogleber != null) zogleber.gameObject.SetActive(false);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(false);
+        _animIndex = 3; _level++;
+        zogleberBtn.onClick.RemoveAllListeners();
+        zogleberBtn.onClick.AddListener(() => { StartCoroutine(GoToZogleber3()); }) ;
+    }
+
+    IEnumerator GoToZogleber3()
+    {
+        zogleberBtn.gameObject.SetActive(false);
+        Application.OpenURL(urlToOpen);
+
+        yield return new WaitForSeconds(2f);
+        nextSlideButton.onClick.RemoveAllListeners();
+        nextSlideButton.onClick.AddListener(() => { nextButton.SetActive(false); LoadScene(); });
+        if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(true);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(false);
         _animIndex = 3; _level++;
     }
 
@@ -317,20 +336,24 @@ public class Lesson_5_Slide4 : Audio_Narration
 
     IEnumerator Slide_17_Initial()
     {
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Plain_transition());                         //fix
+        /*yield return new WaitForSeconds(1);
+        StartCoroutine(Plain_transition());*/
+
+        yield return new WaitForSeconds(2);
         nextSlideButton.onClick.RemoveAllListeners();
         nextSlideButton.onClick.AddListener(Slide_17);
         StartCoroutine(Slide_17_Enum());
     }
+
     IEnumerator Slide_17_Enum()
     {
         Debug.Log("Current Level: " + _level);
-        yield return new WaitForSeconds(1);
         ResetScene();
+        hennikaAnim.Play("Slide17_Hennika_Idle");
         choice1.image.sprite = choice1Sprite[_choiceIndex]; choice2.image.sprite = choice2Sprite[_choiceIndex];
         _choiceIndex++;
 
+        yield return new WaitForSeconds(2);
         SetAudioNarration(_audioIndex); //sentence
         hennikaAnim.Play(animToPlay);
 
@@ -362,8 +385,13 @@ public class Lesson_5_Slide4 : Audio_Narration
         yield return new WaitForSeconds(1);
         SetAudioNarration(_audioIndex);
         hennikaAnim.Play("Slide19_Hennika_Speak");
+
         yield return new WaitForSeconds(3);
-        if (zogleber != null) zogleber.gameObject.SetActive(true);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(true);
+        invisibleWall.SetActive(true);
+
+        yield return new WaitForSeconds(clip[_audioIndex].length - 3);
+        invisibleWall.SetActive(false);
         _audioIndex++;
     }
 
@@ -378,6 +406,7 @@ public class Lesson_5_Slide4 : Audio_Narration
         {
             if (choice == choice2.gameObject)//is correct
             {
+                _level++;
                 Debug.Log("Correct");
                 checkB.sprite = check;
                 checkB.gameObject.SetActive(true);
@@ -390,11 +419,12 @@ public class Lesson_5_Slide4 : Audio_Narration
                 nextSlideButton.onClick.RemoveAllListeners();
                 nextSlideButton.onClick.AddListener(Slide_17);
                 nextSlideButton.gameObject.SetActive(true);
-                _level++;
+                
             }
 
             else                             //is wrong
             {
+                _level++;
                 Debug.Log("Wrong");
                 checkA.sprite = cross;
                 checkA.gameObject.SetActive(true);
@@ -404,11 +434,10 @@ public class Lesson_5_Slide4 : Audio_Narration
                 invisibleWall.SetActive(true);
 
                 yield return new WaitForSeconds(clip[wrongAud[0]].length);
-                invisibleWall.SetActive(false);
-                /*nextSlideButton.onClick.RemoveAllListeners();
+                //invisibleWall.SetActive(false);
+                nextSlideButton.onClick.RemoveAllListeners();
                 nextSlideButton.onClick.AddListener(Slide_17);
                 nextSlideButton.gameObject.SetActive(true);
-                _level++;*/
             }
         }
 
@@ -416,6 +445,7 @@ public class Lesson_5_Slide4 : Audio_Narration
         {
             if (choice == choice1.gameObject)//is correct
             {
+                _level++;
                 Debug.Log("Correct");
                 checkA.sprite = check;
                 checkA.gameObject.SetActive(true);
@@ -428,11 +458,12 @@ public class Lesson_5_Slide4 : Audio_Narration
                 nextSlideButton.onClick.RemoveAllListeners();
                 nextSlideButton.onClick.AddListener(ActivateNextScene);
                 nextSlideButton.gameObject.SetActive(true);
-                _level++;
+                
             }
 
             else                             //is wrong
             {
+                _level++;
                 Debug.Log("Wrong");
                 checkB.sprite = cross;
                 checkB.gameObject.SetActive(true);
@@ -442,11 +473,10 @@ public class Lesson_5_Slide4 : Audio_Narration
                 invisibleWall.SetActive(true);
 
                 yield return new WaitForSeconds(clip[wrongAud[1]].length);
-                invisibleWall.SetActive(false);
-                /*nextSlideButton.onClick.RemoveAllListeners();
+                //invisibleWall.SetActive(false);
+                nextSlideButton.onClick.RemoveAllListeners();
                 nextSlideButton.onClick.AddListener(ActivateNextScene);
                 nextSlideButton.gameObject.SetActive(true);
-                _level++;*/
             }
         }
         else Debug.Log("OUT OF INDEX");

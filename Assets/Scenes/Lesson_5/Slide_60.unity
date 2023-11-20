@@ -1380,7 +1380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &468759892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1400,8 +1400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 111.787415, y: 234.37497}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 491, y: 223}
+  m_SizeDelta: {x: 1000, y: 479.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &468759893
 MonoBehaviour:
@@ -1417,15 +1417,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
-    m_Right: 0
+    m_Right: -372
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 250
+  m_Spacing: 126
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -2074,10 +2074,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 468759892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 625, y: -233.85}
-  m_SizeDelta: {x: 250, y: 467.7}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1233367363
 MonoBehaviour:
@@ -2161,6 +2161,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1244727702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3262610964200060183, guid: f64ad527c6e12ab4e8c6594681511f6d, type: 3}
+  m_PrefabInstance: {fileID: 1805556973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1288679574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,11 +2215,12 @@ MonoBehaviour:
   clip:
   - {fileID: 8300000, guid: be1ce1337da742148a8344aa7db14a15, type: 3}
   transition: {fileID: 1964243346}
-  wilbur: {fileID: 0}
   invisibleWall: {fileID: 809132126}
   nextButton: {fileID: 867965623}
+  zogleber: {fileID: 0}
   hennika: {fileID: 389166721}
   s64_canvas: {fileID: 345983617}
+  teacherBtn: {fileID: 1244727702}
 --- !u!1 &1347116215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,9 +2276,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1712578008c8df84598895ba2c88b549, type: 3}
   - {fileID: 8300000, guid: 2cae42132fb52114b9f65b51c943a89d, type: 3}
   transition: {fileID: 1964243346}
-  wilbur: {fileID: 0}
   invisibleWall: {fileID: 809132126}
   nextButton: {fileID: 867965623}
+  zogleber: {fileID: 0}
   sentenceText:
   - Can you identify the sounds of the letters of the alphabet?
   - Can you identify the beginning sounds of words?
@@ -2773,10 +2779,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 468759892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1125, y: -233.85}
-  m_SizeDelta: {x: 250, y: 467.7}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1787058643
 GameObject:
@@ -2954,6 +2960,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teacher's Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8338730332510066594, guid: f64ad527c6e12ab4e8c6594681511f6d, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1714924146}
+    - target: {fileID: 8338730332510066594, guid: f64ad527c6e12ab4e8c6594681511f6d, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1964243346}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3151,10 +3165,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 468759892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -233.85}
-  m_SizeDelta: {x: 250, y: 467.7}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931108171
 MonoBehaviour:

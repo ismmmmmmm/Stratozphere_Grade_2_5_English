@@ -8,13 +8,14 @@ public class Lesson_5_Slide1 : Audio_Narration
 {
     [SerializeField] Animator mainCam, hennika;
     [SerializeField] AnimationClip camZoomIn, camZoomOut;
-    [SerializeField] GameObject text1B, text2, glisten;
+    [SerializeField] GameObject text1B, text2, glisten, slide2;
     [SerializeField] TextMeshProUGUI text1A;
     typewriterUI typewriterUI;
     string text1Atext;
 
     void Start()
     {
+        text1A.gameObject.SetActive(true);
         text1Atext = text1A.text;
         text1A.text = "";
         typewriterUI = text1A.GetComponent<typewriterUI>();
@@ -36,7 +37,7 @@ public class Lesson_5_Slide1 : Audio_Narration
         yield return new WaitForSeconds(wait1); //audio 1
         text1A.text = text1Atext;
         StartCoroutine(typewriterUI.TypeWriterTMP());
-
+        
         yield return new WaitForSeconds(wait2);
         text1B.SetActive(true); glisten.SetActive(true);
 
@@ -48,5 +49,22 @@ public class Lesson_5_Slide1 : Audio_Narration
         yield return new WaitForSeconds(clip[0].length - (wait1 + wait2 + wait3)); //audio 3
         invisibleWall.SetActive(false);
         hennika.SetBool("isSpeakDone", true);
+    }
+
+    public void Zogleber()
+    {
+        StartCoroutine(ZogleberEnum());
+    }
+
+    IEnumerator ZogleberEnum()
+    {
+        zogleber.SetActive(false);
+        Application.OpenURL("https://zogleber.com");
+        yield return new WaitForSeconds(2);
+        StartCoroutine(Plain_transition());
+
+        yield return new WaitForSeconds(2);
+        slide2.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

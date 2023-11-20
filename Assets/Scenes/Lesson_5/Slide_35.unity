@@ -1266,9 +1266,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d1e99e66b3702de4fa7f3d48bc93b78d, type: 3}
   - {fileID: 8300000, guid: 195fdc307d1c14245adae53ef2230618, type: 3}
   transition: {fileID: 596807661}
-  wilbur: {fileID: 0}
   invisibleWall: {fileID: 287375623}
   nextButton: {fileID: 1579793502}
+  zogleber: {fileID: 0}
   choices:
   - {fileID: 1351198138}
   - {fileID: 102626480}
@@ -3523,7 +3523,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2138715614}
         m_TargetAssemblyTypeName: Lesson_5_Slide50, Assembly-CSharp
-        m_MethodName: GoToZogleber
+        m_MethodName: GoToZogleberT
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4459,15 +4459,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8209a2c46c79a25419a0fdd80fea9870, type: 3}
   - {fileID: 8300000, guid: 260fee26ea1b6504f9eef2aca20639c1, type: 3}
   - {fileID: 8300000, guid: 07fb711aa1986554e8010f0cb1c2ddc9, type: 3}
-  - {fileID: 8300000, guid: 07fb711aa1986554e8010f0cb1c2ddc9, type: 3}
+  - {fileID: 8300000, guid: d40d77da7922baa4fb6ddd9d95d4699a, type: 3}
   - {fileID: 8300000, guid: 6e374dbc37c84a545b09bfb4b95a2a83, type: 3}
   - {fileID: 8300000, guid: 7fce7a50cba357844b95bd83fd5e13fc, type: 3}
   - {fileID: 8300000, guid: 5a6589286ef9143469e4572f5b515b6c, type: 3}
   - {fileID: 8300000, guid: 16f1bc69cbf8ad44996856992ec46fc8, type: 3}
   transition: {fileID: 596807661}
-  wilbur: {fileID: 0}
   invisibleWall: {fileID: 287375623}
   nextButton: {fileID: 1579793502}
+  zogleber: {fileID: 0}
   choicesBtn:
   - {fileID: 1351198136}
   - {fileID: 102626478}
@@ -4571,7 +4571,6 @@ MonoBehaviour:
   dolly: {fileID: 698122447}
   hennika: {fileID: 1122411732}
   mainCam: {fileID: 1184971896}
-  slide50Anim: {fileID: 0}
   hennikaS35: {fileID: 9100000, guid: 99e93f83354b58c459b3fcca5841c0af, type: 2}
   hennikaS40: {fileID: 9100000, guid: 02f61bb1e80559441a76c723e9bfd08d, type: 2}
   camZoomIn: {fileID: 7400000, guid: eda0bb824522c264abf711e6d904c192, type: 2}
@@ -4617,9 +4616,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5a6589286ef9143469e4572f5b515b6c, type: 3}
   - {fileID: 8300000, guid: 16f1bc69cbf8ad44996856992ec46fc8, type: 3}
   transition: {fileID: 596807661}
-  wilbur: {fileID: 0}
   invisibleWall: {fileID: 287375623}
   nextButton: {fileID: 1579793502}
+  zogleber: {fileID: 0}
   hennika: {fileID: 1110725069}
   sentenceText:
   - "What do you do in school? \r\n\r\nWhat do you and your friends love to do in
@@ -4627,7 +4626,7 @@ MonoBehaviour:
   - "Was there an experience when you hurt someone\u2019s feelings? \r\n\r\nWhat
     did you do to show that you are truly sorry? \r"
   TextTMP: {fileID: 12617940}
-  zogleber: {fileID: 1732281748}
+  zogleberBtn: {fileID: 1732281748}
   nextSlideButton: {fileID: 1579793503}
 --- !u!4 &2138715615
 Transform:

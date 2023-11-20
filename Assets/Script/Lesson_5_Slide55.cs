@@ -55,6 +55,8 @@ public class Lesson_5_Slide55 : Audio_Narration
 
     public void OnClickCheckLevel()
     {
+        button.SetActive(false);
+
         if (_level < 1)
         {
             StartCoroutine(NextScene());

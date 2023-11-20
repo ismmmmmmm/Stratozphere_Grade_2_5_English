@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 public class Lesson_5_Slide63 : Audio_Narration
 {
     [SerializeField] Animator hennika;
-    [SerializeField] GameObject s64_canvas;
+    [SerializeField] GameObject s64_canvas, teacherBtn;
     GameObject s64Text, s65Text, page1, page2;
     Button nextSlideBtn;
 
@@ -15,6 +15,7 @@ public class Lesson_5_Slide63 : Audio_Narration
 
     void Start()
     {
+        teacherBtn.SetActive(false);
         s64Text = s64_canvas.transform.GetChild(0).gameObject;
         s65Text = s64_canvas.transform.GetChild(1).gameObject;
         page1 = s65Text.transform.GetChild(0).gameObject;
@@ -24,8 +25,9 @@ public class Lesson_5_Slide63 : Audio_Narration
         s64_canvas.SetActive(false);
         page1.SetActive(true); page2.SetActive(false);
         s64Text.SetActive(true); s65Text.SetActive(false);
-
+        
         nextSlideBtn = nextButton.GetComponent<Button>();
+        nextSlideBtn.onClick.RemoveAllListeners();
         nextSlideBtn.onClick.AddListener(NextScene);
         StartCoroutine(StartScene());
         TMPLinkHandler.OnClickedOnLinkEvent = null;

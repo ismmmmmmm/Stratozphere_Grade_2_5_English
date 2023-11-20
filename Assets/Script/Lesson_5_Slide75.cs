@@ -21,8 +21,8 @@ public class Lesson_5_Slide75 : Audio_Narration
         nextSlideBtn = nextButton.GetComponent<Button>();
         //nextSlideBtn.onClick.AddListener(() => { StartCoroutine(LoadPage()); });
         nextSlideBtn.onClick.AddListener(LoadPage);
-        // StartCoroutine(InitialScene());
-        StartCoroutine(FinalScene());
+        StartCoroutine(InitialScene());
+        //StartCoroutine(FinalScene());
     }
 
     IEnumerator InitialScene()
