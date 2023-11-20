@@ -19,7 +19,7 @@ public class Lesson_5_Slide21 : Audio_Narration
 
     void Update()
     {
-        FastForward();
+        //FastForward();
     }
 
     void FastForward()
