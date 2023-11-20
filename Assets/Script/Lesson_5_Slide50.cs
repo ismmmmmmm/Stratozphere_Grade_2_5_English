@@ -10,7 +10,7 @@ public class Lesson_5_Slide50 : Audio_Narration
     [TextArea(3, 10)]
     [SerializeField] string[] sentenceText;
     [SerializeField] TextMeshProUGUI TextTMP;
-    [SerializeField] Button zogleber, nextSlideButton;
+    [SerializeField] Button zogleberBtn, nextSlideButton;
     Animator _sentence;
     string urlToOpen = "https://www.zogleber.com";
     int _audioIndex, _level, _speedMultiplier = 10;
@@ -19,7 +19,7 @@ public class Lesson_5_Slide50 : Audio_Narration
     void Awake()
     {
         if (TextTMP != null) _sentence = TextTMP.GetComponent<Animator>();
-        if (zogleber != null) zogleber.gameObject.SetActive(false);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(false);
         if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(false);
     }
 
@@ -31,7 +31,10 @@ public class Lesson_5_Slide50 : Audio_Narration
 
     void StartScene()
     {
+        nextButton.SetActive(false);
         StartCoroutine(InitialSceneSequence_Slide50());
+        nextSlideButton.onClick.RemoveAllListeners();
+        nextSlideButton.onClick.AddListener(LoadScene);
     }
     IEnumerator InitialSceneSequence_Slide50()
     {
@@ -49,7 +52,7 @@ public class Lesson_5_Slide50 : Audio_Narration
         hennika.SetBool("isSpeakDone", false);
         hennika.Play("Slide1-4_Speak");
         SetAudioNarration(_audioIndex);
-        if (zogleber != null) zogleber.gameObject.SetActive(true);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(true);
         invisibleWall.SetActive(true);
 
         yield return new WaitForSeconds(clip[_audioIndex].length);
@@ -58,17 +61,18 @@ public class Lesson_5_Slide50 : Audio_Narration
         _audioIndex++; _level++;
     }
 
-    public void GoToZogleber()
+    public void GoToZogleberT()
     {
         StartCoroutine(GoToZogleberEnum());
     }
 
     IEnumerator GoToZogleberEnum()
     {
+        if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(true);
+        if (zogleberBtn != null) zogleberBtn.gameObject.SetActive(false);
+        zogleberBtn.gameObject.SetActive(false);
         Application.OpenURL(urlToOpen);
         yield return new WaitForSeconds(2f);
-        if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(true);
-        if (zogleber != null) zogleber.gameObject.SetActive(false);
     }
 
     void Update()

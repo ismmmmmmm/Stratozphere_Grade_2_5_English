@@ -9,9 +9,8 @@ public class Audio_Narration : MonoBehaviour
     public AudioSource source;
     public AudioClip[] clip;
     public Animator transition;
-    public Animator wilbur;
     public GameObject invisibleWall;
-    public GameObject nextButton;
+    public GameObject nextButton, zogleber;
 
     private void Start()
     {
@@ -23,10 +22,15 @@ public class Audio_Narration : MonoBehaviour
         source.clip = clip[audioClip];
         source.Play();
     }
+
+    public void RestartScene(int buildIndex)
+    {
+        StartCoroutine(NextSceneCoroutine(buildIndex));
+    }
     
     public IEnumerator NextSceneCoroutine(int buildIndex)
     {
-        transition.Play("Plain_Transition");
+        transition.Play("Slide_5_Transition_Out");
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(buildIndex);
     }
@@ -79,6 +83,7 @@ public class Audio_Narration : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine()
     {
+        invisibleWall.SetActive(true);
         transition.Play("Slide_5_Transition_Out");
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -96,13 +101,14 @@ public class Audio_Narration : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void GoToZoglebere()
+    public void GoToZogleber()
     {
         StartCoroutine(GoToZogleberCoroutine());
     }
 
     private IEnumerator GoToZogleberCoroutine()
     {
+        zogleber.SetActive(false);
         Application.OpenURL("https://zogleber.com");
         yield return new WaitForSeconds(2);
         LoadScene();

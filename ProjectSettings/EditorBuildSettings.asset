@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Lesson_5/Title Page.unity
+    path: Assets/Scenes/Lesson_5/_Title Page.unity
     guid: d692dc489c7d9404ba8fa41da1382ad0
+  - enabled: 1
+    path: Assets/Scenes/Lesson_5/Slide_1.unity
+    guid: bedcb166c8366ca4f88e97b7f7bc4a4d
   - enabled: 1
     path: Assets/Scenes/Lesson_5/Slide_4.unity
     guid: 25a6d78b1cb97224ebbf92e139bbef8a
@@ -20,4 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lesson_5/Slide_35.unity
     guid: 475ba23ae3665a44f87755b9f58e77ed
+  - enabled: 1
+    path: Assets/Scenes/Lesson_5/Slide_52.unity
+    guid: d4e61104fa6f6fc4cbc9508a202f5b6a
+  - enabled: 1
+    path: Assets/Scenes/Lesson_5/Slide_55.unity
+    guid: 98090b80fa2b63c48a5be654329d25fc
+  - enabled: 1
+    path: Assets/Scenes/Lesson_5/Slide_60.unity
+    guid: 66701add421cf0b42bf87ae35574c1d1
+  - enabled: 1
+    path: Assets/Scenes/Lesson_5/Slide_66.unity
+    guid: b3304d7ab7ad8e145a97f48ee63ff2d5
+  - enabled: 1
+    path: Assets/Scenes/Lesson_5/Slide_75.unity
+    guid: 38ae61ebabbf96c479d3179a8af84e38
   m_configObjects: {}

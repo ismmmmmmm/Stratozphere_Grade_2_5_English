@@ -4,18 +4,17 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class testz : MonoBehaviour
+public class testz : Audio_Narration
 {
-    int[] nums = { 1, 2, 3 };
-    public GameObject go;
+   
     void Start()
     {
-        nums.Take(nums.Count() - 2).ToArray();
+        StartCoroutine(Plain_transition());
         
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.F)) { StartCoroutine(Plain_transition()); }
     }
 }

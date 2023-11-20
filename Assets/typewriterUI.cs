@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
+using System;
+using UnityEngine.Windows;
 
 public class typewriterUI : MonoBehaviour
 {
@@ -23,8 +26,6 @@ public class typewriterUI : MonoBehaviour
         if (_tmpProText != null)
         {
             _writer = _tmpProText.text;
-            _tmpProText.text = "";
-
 
             _tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
 
@@ -46,6 +47,5 @@ public class typewriterUI : MonoBehaviour
                 _tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
             }
         }
-       
     }
 }   
