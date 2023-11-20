@@ -83,6 +83,7 @@ public class Audio_Narration : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine()
     {
+        invisibleWall.SetActive(true);
         transition.Play("Slide_5_Transition_Out");
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

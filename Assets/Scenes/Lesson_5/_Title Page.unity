@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18463283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5815314728214813288, guid: 60f420baa52b2ec44944bbbdc29e10fe, type: 3}
+  m_PrefabInstance: {fileID: 707065939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &219390478
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,12 +410,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2447950278552556382, guid: 61fa4253fff0add44b5efae1e6b59bf0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: eab2f039d0194564d9e399a2eab74180, type: 3}
     - target: {fileID: 8333455646962374193, guid: 61fa4253fff0add44b5efae1e6b59bf0, type: 3}
       propertyPath: m_Name
       value: UI_System
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4789564104488388353, guid: 61fa4253fff0add44b5efae1e6b59bf0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3953747528273613197, guid: 61fa4253fff0add44b5efae1e6b59bf0, type: 3}
@@ -1095,9 +1105,9 @@ MonoBehaviour:
   source: {fileID: 1999696971}
   clip: []
   transition: {fileID: 303648952}
-  wilbur: {fileID: 0}
-  invisibleWall: {fileID: 0}
+  invisibleWall: {fileID: 18463283}
   nextButton: {fileID: 0}
+  zogleber: {fileID: 0}
 --- !u!1 &1899888279
 GameObject:
   m_ObjectHideFlags: 0
