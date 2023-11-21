@@ -48,9 +48,11 @@ public class Lesson_5_Slide21 : Audio_Narration
 
     IEnumerator StartS21Enum()
     {
+        invisibleWall.SetActive(true);
         StartCoroutine(Plain_transition());
 
         yield return new WaitForSeconds(2);
+        invisibleWall.SetActive(false);
         s20Draw.ClearLines();
         s21Hennika.gameObject.SetActive(true);
         s20.gameObject.SetActive(false);

@@ -14,7 +14,7 @@ public class Lesson_5_Slide2 : Audio_Narration
     GameObject text1B, glisten, drawing;
     string text1text;
     int _audioIndex;
-    float wait1 = 0f, wait2 = 7.5f, wait3 = 10.5f, startWait = 3.5f;
+    float wait1 = 0f, wait2 = 11f, wait3 = 7.5f, startWait = 3.5f;
     Button saveBtn;
 
     void Start()
@@ -73,7 +73,7 @@ public class Lesson_5_Slide2 : Audio_Narration
         s20Draw.ClearLines();
 
         drawing.SetActive(false);
-        wait2 = 8.5f; wait3 = 4.5f; startWait = 1f;
+        wait2 = 9.5f; wait3 = 3.5f; startWait = 1f;
         drawing = drawingS3;
         s20Draw = drawingS3.transform.Find("Hennika").GetComponent<Slide_20_Draw>();
         hennika = hennikaS3;

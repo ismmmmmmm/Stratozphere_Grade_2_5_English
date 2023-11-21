@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Lesson_4_Slide17 : Audio_Narration
 {
     public TextMeshProUGUI textMeshProUGUI;
-    public Button zogleber,nextSlideButton;
+    public Button zogleberBtn,nextSlideButton;
     public Animator hennika,transit;
     public Sprite[] imageSprite;
     public string[] questins;
@@ -73,16 +73,16 @@ public class Lesson_4_Slide17 : Audio_Narration
             hennika.Play("S17_Hennika_Perc_Speaking"); yield return new WaitForSeconds(2);
             hennika.SetBool("isIdle", true); yield return new WaitForSeconds(.5f);
         }
-        zogleber.onClick.AddListener(GoToZogle);
-        zogleber.gameObject.SetActive(true);
+        zogleberBtn.onClick.AddListener(GoToZogle);
+        zogleberBtn.gameObject.SetActive(true);
 
     }
 
 
     public void GoToZogle()
     {
-        zogleber.onClick.RemoveAllListeners();
-        zogleber.gameObject.SetActive(false);
+        zogleberBtn.onClick.RemoveAllListeners();
+        zogleberBtn.gameObject.SetActive(false);
         textMeshProUGUI.gameObject.SetActive(false);
         nextSlideButton.onClick.AddListener(NextPage1);
         Application.OpenURL("www.zogleber.com");
@@ -158,8 +158,8 @@ public class Lesson_4_Slide17 : Audio_Narration
         }
 
         invisibleWall.SetActive(false);
-        zogleber.onClick.AddListener(GoToNextSlide);
-        zogleber.gameObject.SetActive(true);
+        zogleberBtn.onClick.AddListener(GoToNextSlide);
+        zogleberBtn.gameObject.SetActive(true);
 
     }
 
