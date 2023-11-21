@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Lesson_5_slide66 : Audio_Narration
 {
     int _audioIndex, _level, _textIndex = 0, _speedMultiplier = 10;
-    float _glistenWait = 15f, _startWait = 3.5f;
+    float _glistenWait = 12f, _startWait = 3.5f;
     bool _isFast;
     [SerializeField] GameObject _glisten, _slide66, _slide68, _slide71;
     [SerializeField] GameObject[] _text;
@@ -54,15 +54,14 @@ public class Lesson_5_slide66 : Audio_Narration
         _level++; _glisten.SetActive(false);
         yield return new WaitForSeconds(_startWait);
         SetAudioNarration(_audioIndex);
-        //invisibleWall.SetActive(true);
-
+        invisibleWall.SetActive(true);
 
         yield return new WaitForSeconds(_glistenWait);
         _glisten.SetActive(true);
 
         yield return new WaitForSeconds(clip[_audioIndex].length - _glistenWait);
-        _audioIndex++; _glistenWait = 11; _startWait = 1;
-        //invisibleWall.SetActive(false);
+        _audioIndex++; _glistenWait = 10; _startWait = 1;
+        invisibleWall.SetActive(false);
     }
 
     void NextScene()

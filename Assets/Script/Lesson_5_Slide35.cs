@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using System.Linq.Expressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,7 +32,7 @@ public class Lesson_5_Slide35 : Audio_Narration
     int _currentValue, _level, _btnCount, _animIndex = 1, _audioIndex = 1
         , _speedMultiplier = 10, currentSprite, _wrongIndex;
     int[] wrongAudIndex = { 24, 24, 24, 25, 25 }; //s45-49
-    float waitSec;
+    float waitSec;// waitEachBtn = 2.2f;
     bool _isVisible = false, _isFast;
     Transform _slide40Canvas; Vector3 _layoutGroupDefaultSize;
     Lesson_5_Slide40 _s40;
@@ -105,7 +106,7 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     IEnumerator InitialSceneSequence_Slide35()
     {
-        yield return new WaitForSeconds(2); //screen load
+        yield return new WaitForSeconds(3.5f); //screen load
 
         if (camZoomIn != null) mainCam.Play(camZoomIn.name); //camera zoom in
         yield return new WaitForSeconds(camZoomIn.length);
@@ -343,11 +344,20 @@ public class Lesson_5_Slide35 : Audio_Narration
 
         yield return new WaitForSeconds(.1f);
         //activate all choices 
+        
         foreach (Button button in choices)
         {
             button.gameObject.SetActive(true);
-            if (_level == 3) yield return new WaitForSeconds(1.2f); // faster delay between buttons on faster text
-            else yield return new WaitForSeconds(2.5f); //delay between buttons
+            if (_level == 3)
+            {
+                //waitEachBtn = 1.2f;
+                yield return new WaitForSeconds(1.2f); // faster delay between buttons on faster text
+            }
+            else
+            {
+                //waitEachBtn = 2.2f;
+                yield return new WaitForSeconds(2.2f); //delay between buttons
+            }
         }
 
         //start choices uninteractable
@@ -359,11 +369,13 @@ public class Lesson_5_Slide35 : Audio_Narration
                 button.interactable = true;
             }
         }
-
+        //yield return new WaitForSeconds(clip[_audioIndex].length - 4 - (waitEachBtn * choices.Length));
+        if (_level <= 4) yield return new WaitForSeconds(2);
         //wait all choice buttons to show up before activating questionTMP
         if (questionTMP != null) questionTMP.gameObject.SetActive(true);
         if (helpBtn != null) helpBtn.gameObject.SetActive(true);
 
+        
         onComplete.Invoke();
     }
 
@@ -404,6 +416,8 @@ public class Lesson_5_Slide35 : Audio_Narration
 
     IEnumerator CheckAnswer() //check if clicked choice index == int correctAnswer
     {
+        invisibleWall.SetActive(true);
+
         if (_currentValue == correctAnswer[_level]) //is correct
         {
             //  _canClick = true;
@@ -418,8 +432,9 @@ public class Lesson_5_Slide35 : Audio_Narration
             if (hennika != null) hennika.Play("Hennika_Idle");
 
             SetAudioNarration(correctAudioIndex);
-            yield return new WaitForSeconds(.2f);
 
+            yield return new WaitForSeconds(.2f);
+            invisibleWall.SetActive(false);
             if (nextSlideButton != null) nextSlideButton.gameObject.SetActive(true);
             nextSlideButton.onClick.AddListener(ActivateNextScene);
             _level++;
@@ -601,6 +616,7 @@ public class Lesson_5_Slide35 : Audio_Narration
         slide40.SetActive(false);
         hennika.gameObject.SetActive(false);
         dolly.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
         _audioIndex = 26;
 
         /*yield return new WaitForSeconds(1);
