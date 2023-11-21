@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     public Slider audioSlider;
     public AudioSource musicAudioSource;
     public AudioSource audioSource;
-    public Sprite xSprite, pauseSprite;
+    Sprite xSprite, pauseSprite;
 
     GameObject panel, pause;
     bool isPaused = false;
@@ -22,9 +22,13 @@ public class AudioManager : MonoBehaviour
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
 
+        xSprite = Resources.Load<Sprite>("xBtn");
+        pauseSprite = Resources.Load<Sprite>("pauseBtn");
+
+
         // Read and set previously saved value
-        musicAudioSource.volume = musicSlider.value;
-        audioSource.volume = audioSlider.value;
+        musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+        audioSource.volume = PlayerPrefs.GetFloat("AudioVolume");
 
         // Add listeners to the sliders
         musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
